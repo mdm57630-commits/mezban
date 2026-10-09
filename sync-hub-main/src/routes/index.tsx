@@ -1,10 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 import heroAsset from "@/assets/hero-biryani.jpg.asset.json";
 import { GooeyButton } from "@/components/GooeyButton";
 import { GooeyNav } from "@/components/GooeyNav";
-import { SteamOverlay } from "@/components/SteamOverlay";
 
 const TITLE = "Mezban — Bangladeshi Restaurant in Madinah, Open 24 Hours";
 const DESCRIPTION =
@@ -60,7 +59,6 @@ function Index() {
     return () => document.body.classList.remove("mezban");
   }, []);
 
-  const heroRef = useRef<HTMLElement>(null);
   const left = MENU.slice(0, 6);
   const right = MENU.slice(6);
 
@@ -73,7 +71,10 @@ function Index() {
 
       <nav className="mz-nav">
         <div className="mz-brand">
-          MEZBAN<small>BANGLADESHI RESTAURANT</small>
+          <span className="mz-brand-mark">ম</span>
+          <span>
+            MEZBAN<small>BANGLADESHI RESTAURANT</small>
+          </span>
         </div>
         <GooeyNav
           items={NAV}
@@ -84,42 +85,32 @@ function Index() {
           colors={[1, 2, 3, 1, 2, 3, 1, 4]}
         />
         <GooeyButton className="mz-order" href="#menu">
-          Order Now <span>♧</span>
+          বাংলা
         </GooeyButton>
       </nav>
 
-      <header className="mz-hero" id="home" ref={heroRef}>
-        <img
-          className="mz-heroimg"
-          src={heroAsset.url}
-          alt="Bangladeshi biryani served at Mezban in Madinah"
-        />
-        <SteamOverlay className="mz-herosteam" interactiveContainerRef={heroRef} />
-        <div className="mz-hero-title">mezban</div>
+      <header className="mz-hero mz-hero-old" id="home">
+        <div className="mz-hero-glow" aria-hidden="true" />
+        <div className="mz-hero-dish">
+          <img
+            className="mz-heroimg"
+            src={heroAsset.url}
+            alt="Bangladeshi biryani served at Mezban in Madinah"
+          />
+        </div>
+        <div className="mz-hero-skyline" aria-hidden="true">
+          ♧ ︿︿︿ 𑁋 ︿︿︿ ♧
+        </div>
         <div className="mz-hero-copy">
-          <h1>
-            The taste of <em>Bangladesh,</em>
-            <br />
-            served in <strong>Madinah.</strong>
-          </h1>
-          <div className="mz-rule" />
-          <p>
-            Authentic recipes.
-            <br />
-            Rich flavors.
-            <br />
-            Warm hospitality.
-          </p>
-          <GooeyButton className="mz-discover" href="#menu">
-            <i>↓</i> Discover our food
+          <div className="mz-hero-kicker">চট্টগ্রামের ঐতিহ্যবাহী</div>
+          <h1>মুচা</h1>
+          <div className="mz-hero-subtitle">এখন মদিনার মেজবানে</div>
+          <p>CHATTOGRAM'S LEGENDARY MUCHA, NOW IN MADINAH</p>
+          <GooeyButton className="mz-discover mz-old-order" href="#menu">
+            ORDER NOW <span>→</span>
           </GooeyButton>
         </div>
-        <div className="mz-rail">
-          {[0, 1, 2, 3].map((n) => (
-            <img key={n} src={heroAsset.url} alt="" />
-          ))}
-          <b>Signature dishes</b>
-        </div>
+        <div className="mz-hero-rating">★ 4.8 · 500+ GOOGLE REVIEWS</div>
       </header>
 
       <section className="mz-promise" id="story">
