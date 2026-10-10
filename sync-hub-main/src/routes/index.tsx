@@ -59,9 +59,6 @@ function Index() {
     return () => document.body.classList.remove("mezban");
   }, []);
 
-  const left = MENU.slice(0, 6);
-  const right = MENU.slice(6);
-
   return (
     <>
       <div className="mz-topbar">
@@ -142,32 +139,26 @@ function Index() {
         </h2>
         <p className="mz-menu-note">All prices in SR · S/L = Small / Large</p>
         <div className="mz-menu-grid">
-          {[left, right].map((column, ci) => (
-            <div key={ci}>
-              {column.map((group, gi) => (
-                <div key={group.category}>
-                  <div className="mz-cat" style={gi > 0 ? { marginTop: 45 } : undefined}>
-                    {group.category}
+          {MENU.map((group) => (
+            <div className="mz-menu-group" key={group.category}>
+              <div className="mz-cat">{group.category}</div>
+              {group.items.map((item, ii) => (
+                <div className="mz-item" key={`${item.name}-${ii}`}>
+                  <div className="mz-item-main">
+                    <span>
+                      {item.name}
+                      {item.desc && item.desc.length <= 20 && (
+                        <em className="mz-item-tag">{item.desc}</em>
+                      )}
+                    </span>
+                    {item.desc && item.desc.length > 20 && (
+                      <small className="mz-item-desc">{item.desc}</small>
+                    )}
                   </div>
-                  {group.items.map((item, ii) => (
-                    <div className="mz-item" key={`${item.name}-${ii}`}>
-                      <div className="mz-item-main">
-                        <span>
-                          {item.name}
-                          {item.desc && item.desc.length <= 20 && (
-                            <em className="mz-item-tag">{item.desc}</em>
-                          )}
-                        </span>
-                        {item.desc && item.desc.length > 20 && (
-                          <small className="mz-item-desc">{item.desc}</small>
-                        )}
-                      </div>
-                      <div className="mz-item-side">
-                        {item.cal && <small>{item.cal} cal</small>}
-                        <span className="mz-price">{item.price}</span>
-                      </div>
-                    </div>
-                  ))}
+                  <div className="mz-item-side">
+                    {item.cal && <small>{item.cal} cal</small>}
+                    <span className="mz-price">{item.price}</span>
+                  </div>
                 </div>
               ))}
             </div>

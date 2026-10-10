@@ -194,7 +194,8 @@ body.mezban { background: var(--crust); color: var(--mz-white); font-family: "DM
 .mz-section{padding:120px 42px;background:var(--crust);color:var(--beef)}
 .mz-section.mz-dark{background:var(--beef);color:var(--mz-white)}
 .mz-section h2{font-family:"Bodoni Moda",serif;font-size:clamp(65px,10vw,150px);font-weight:400;letter-spacing:-.08em;line-height:.8;margin:15px 0 65px}
-.mz-menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px}
+.mz-menu-grid{column-count:2;column-gap:70px}
+.mz-menu-group{break-inside:avoid;margin:0 0 45px}
 .mz-cat{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--pepper);padding-bottom:13px;border-bottom:1px solid rgba(85,23,9,.25);margin-bottom:0}
 .mz-dark .mz-cat{border-bottom-color:rgba(255,249,239,.25)}
 .mz-item{display:flex;justify-content:space-between;gap:20px;padding:17px 0;border-bottom:1px solid rgba(85,23,9,.12);font-family:"Bodoni Moda",serif;font-size:20px}
@@ -223,7 +224,8 @@ body.mezban { background: var(--crust); color: var(--mz-white); font-family: "DM
   .mz-facts{grid-template-columns:1fr 1fr;gap:40px;padding:55px 25px}
   .mz-fact:nth-child(3){border-left:0}
   .mz-section{padding:85px 20px}
-  .mz-menu-grid,.mz-visit{grid-template-columns:1fr}
+  .mz-menu-grid{column-count:1}
+  .mz-visit{grid-template-columns:1fr}
   .mz-footer{padding:25px 20px;display:block}
   .mz-footer small{display:block;margin-top:20px}
   .mz-hero{min-height:650px}
